@@ -6,8 +6,9 @@
 
 // @lc code=start
 /**
- * @param {number} n
- * @return {string[][]}
+
+其实还是穷举, 只不过是逐层放子, 出现冲突时就不再继续往下了
+
  */
 const solveNQueens = (n) => {
   const result = []
@@ -19,10 +20,7 @@ const solveNQueens = (n) => {
       // 验证当前位置是否可用 (当前层和之前层是否冲突)
       let isOk = true
       for (let j = 0; j < deep; j++) {
-        if (
-          chessBoard[deep] == chessBoard[j] ||
-          Math.abs(deep - j) == Math.abs(chessBoard[deep] - chessBoard[j])
-        ) {
+        if (chessBoard[deep] == chessBoard[j] || Math.abs(deep - j) == Math.abs(chessBoard[deep] - chessBoard[j])) {
           isOk = false
           break
         }
